@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Rock, Paper, Scissors</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Rock, Paper, Scissors</h1>
+
+    <h2>Press R, P or S...</h2>
+
+    <p> Your last selection was: <span id="myselection"> 0</span> </p>
+    <p> PC last selection was: <span id="pcselection"> 0</span> </p>
+    <p> Wins: <span id="wins"> 0</span> </p>
+    <p> Loses: <span id="loses"> 0</span> </p>
+    <p> Ties: <span id="ties"> 0</span> </p>
+
+
+    <script>
+        var pcchoices = ["r", "p", "s"];
+        var wins = 0;
+        var loses = 0;
+        var ties = 0;
+        document.onkeyup = function () {
+            var pcsel = pcchoices[Math.floor(Math.random() * pcchoices.length)];
+            var mysel = String.fromCharCode(event.keyCode).toLowerCase();
+            if ((mysel === "p" && pcsel === "r") || (mysel === "r" && pcsel === "s") || (mysel === "s" && pcsel === "p")) {
+                wins++;
+                alert("You win!!! total wins: " + wins + "\nyou selection was: " + mysel + " and pc selection was: " + pcsel + "\npress 'ok' and try again");
+                document.getElementById('wins').innerHTML = wins;
+            }
+
+            else if (((mysel === "r" && pcsel === "p") || (mysel === "s" && pcsel === "r") || (mysel === "p" && pcsel === "s"))) {
+                loses++;
+                alert("You lost!!! total loses: " + loses + "\nyou selection was: " + mysel + " and pc selection was: " + pcsel + "\npress 'ok' and try again");
+                document.getElementById('loses').innerHTML = loses;
+            }
+            else if (mysel === pcsel) {
+                ties++;
+                alert("ties!!! total ties: " + ties + "\nyou selection was: " + mysel + " and pc selection was: " + pcsel + "\npress 'ok' and try again");
+                document.getElementById('ties').innerHTML = ties;
+            } else {
+                alert("invalid key!!! press r,p or s");
+            }
+
+
+        }
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
